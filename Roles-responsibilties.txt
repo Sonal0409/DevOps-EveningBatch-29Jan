@@ -1,0 +1,65 @@
+
+12-18 years Experience: Associate Director - Cloud DevOps Engineer
+
+12 to 18 years of total experience.
+Developed infrastructure on Azure/GCP cloud.
+Hands-on experience in building Terraform pipelines.
+Hands-on experience using any scripting languages for infrastructure development
+Experience in consulting/consultative roles/projects.
+Experience in consulting with global clients
+Experience in DevOps using terraform, Kubernetes.
+
+Responsibiltiy:
+
+ Oversee the Building and Running of multiple cloud service teams who help business sectors design, build and maintain infrastructure and software services primarily in the three public cloud environments (AWS, Azure and GCP)
+ Contribute towards the overall strategic direction for the wider Cloud and Engineering communities as well as your direct cloud service teams
+ Lead, sponsor and mentor your various teams of engineers. Provide both technical and managerial support, guidance and advice where needed at any level
+ Leverage extensive experience to assist your teams, and the wider cloud community at any grade level
+ Responsible for ensuring all your service teams are financially buoyant and resourced correctly
+ Build strong relationships and be the trusted advisor from a Cloud and DevOps perspective
+ Build on existing and forge new relationships with the wider firm at Director, Partner and Senior Partner level
+ Ensure all teams are approaching and meeting both client and firm regulatory and security controls and are able to feed these ways of working back to the community
+ Support your wider Infrastructure community by assisting other teams, sharing knowledge, debugging problems, contributing code to central projects, and any other things you can think of
+
+6 to 10 years experience:
+==================================================
+
+- 6-10 years of experience in IT including Development in Java/Python and/or running large scale customer facing web services in a DevOps/SRE environment
+- Automation experience using Terraform, Python, Scripting, Containers
+- Aptitude to be a good team player and the willingness to learn and implement new Cloud technologies as needed
+- Methodical approach to troubleshooting complex problems
+- Solid understanding and experience in:
+ - Cloud computing concepts and platforms
+ - Java and REST APIs, web application stack and patterns
+ - Database administration, SQL and PL/SQL
+ - Linux internals and system administration
+ - Scripting languages such as Python, Bash
+ - Cloud service lifecycle management
+ - Configuration and change management and automation
+ - Cloud Service monitoring and incident management
+
+In detail responsibilties:
+==========================
+
+Service Ownership –
+A devOps engineer can be part of the DevOps/SRE team, whose mission is the shared full stack ownership of a collection of services and/or technology areas. 
+As a devops team member you will have to understand the end-to-end product, configuration, technical dependencies, and overall behavioral characteristics of the production services, monitoring, diagnosability, incident management, etc.
+A devOps engineer works closely with development teams and will have the responsibility to ensure that services are designed and delivered to be mission critical with focus on security, resiliency, scale, and performance.
+
+Service Design – you will partner with development teams in defining and implementing improvements in service architecture, both current and future. You will be an expert at articulating technical characteristics of your services and the dependencies between services and guide Development teams to engineer and add premier capabilities to the Oracle Cloud service portfolio. Additionally, contribute to implementation of service functionality to solve customer requirements.
+
+Service Monitoring - Define Service Level Objectives (SLO) and implement/monitor Service Level Indicators (SLI) for production services. Aggregate data from multiple monitoring tools, normalize, and build tools and alerts for the overall system health.
+
+
+Operations Engineering – You will understand and be able to communicate the scale, capacity, security, performance attributes and requirements of the services you own. You are a Subject Matter Expert, able to understand and communicate every characteristic of your service stack, such as: degradation and behavior under load of the services and their dependencies end-to-end tuning needs, optimizing resource utilization, as load patterns fluctuate Instrumentation and metrics that clearly describe the service behaviors scaling requirements and patterns, resiliency and recoverability, ensuring that backup / restore and disaster recovery capabilities are implemented, tested and maintained
+
+
+Service Automation – You will have a clear understanding of automation and orchestration principles, and will be eager to automate, wherever and whenever the possibility arises, while simultaneously eliminating technical debt. Automation must be part of your DNA.
+
+
+Prevention - Once you have expertly resolved an issue, you will immediately work on how to more quickly resolve the problem next time, with the goal to eventually prevent the problem happening ever again
+
+
+Broad Interests - DevOps engineers are a rare mix of sysadmins and development engineers, and as such have the ability to understand and explain the effect of product architecture decisions on the ability to run as distributed systems. They are driven by professional curiosity and a desire to develop deep understanding of their services and the technologies they depend upon.
+
+Represent DevOps - Proactive, self-motivated, customer-focused, organized, and a good communicator. DevOps Engineers can be expected to represent Cloud products and engineering in sensitive forums.
