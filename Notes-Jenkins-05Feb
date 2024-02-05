@@ -1,5 +1,35 @@
 Jenkins Demo:
 
+Change Jenkins Port number:
+
+1. go to below path
+
+     /usr/lib/systemd/system
+
+  2.  Open below configuration file
+
+      sudo vi jenkins.service
+
+  3. Go to below property and change the port number
+
+       Environment="JENKINS_PORT=8383”
+
+  4. jenkins service changed on disk. Run ‘systemctl daemon-reload’ to reload units.
+
+      sudo systemctl daemon-reload
+
+  4. Restart Jenkins 
+
+      sudo systemctl restart jenkins
+
+  5. Check the Status of Jenkins Server
+
+     sudo systemctl status jenkins
+
+  6. Access the URL(with new port number) in browser level.
+
+     http://<<publicIPAddress of EC2 Instance>:8383/login
+
 1. Create a Freestyle job in jenkins
 
 Create a new job in jenkins
