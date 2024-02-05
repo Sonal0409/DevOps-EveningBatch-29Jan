@@ -2,6 +2,20 @@ Jenkins Demo:
 
 1. Create a Freestyle job in jenkins
 
+Create a new job in jenkins
+Click on + sign to create new item/job/project
+Give a name to the job : Job1
+Select freestyle project and click on OK button
+Go to Build Steps --> Select Execute Shell
+Give below commands
+touch sonal
+echo "hello from Jenkins!"
+
+Save the JOb
+
+Click on build Now
+
+Click on workspace
 
 
 2. Create a freestyle job and integrate it with GITHUB repostitory
