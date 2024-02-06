@@ -1,0 +1,98 @@
+Declarative pipeline: 
+
+- Pipeline is nothing but a set of tasks executed one after the other
+- In jenkins we create pipeline using the pipeline template while creating the job
+- A pipeline in jenkisn is created by writing code -> pipeline as Code
+- The pipeline code is based on groovy scripting -> And the syntax is called as Declarative pipeline syntax
+- A Declarative pipeline syntax is easy to read and write.
+- No special programming skills are required to write Declarative pipeline syntax
+- This Declarative pipeline syntax is very structured, the jenkins admin has to follow the structure and write pipeline code
+- Jenkisn pipeline template provides an editor where we can write the pipeline code
+- In real time, many admins prefer writing pipeline code using VS code editor and push pipeline code to github
+- Once the pieplien code is written jenkisn itself will validate the code and then it will execute the code
+- Jenkisn gives us a small tool called as pipeline code snippet generator tool -> this tool can automatically generate pipeline code for you based on your inputs
+- a pipeline starts with keyword pipeline
+
+Declarative Syntax:
+
+  key 'value'
+
+  company 'Edureka'
+  trainer 'Sonal'
+  number 1234566
+
+Key is given by jenkins, value will be given by user
+
+
+// no pipeline code otuside
+
+pipeline{
+
+tools{
+ 		// here we will write names of tool(given on tools page) that we have to use to exeucte the pipeline tasks
+                // this section is optional
+
+}
+
+// which Virtual machine/agent do you want to run your pipeline
+
+agent any    ==> here the term 'any' means , the current jenkisn server
+
+
+
+// there will be only one agent section
+// this is a mandatory section
+
+parameters{
+                              // names of variables and values
+}
+
+triggers{
+
+}
+
+stages{
+
+	stage("job1")
+{
+
+		steps{
+
+			}
+
+}  
+
+	stage("job2")
+{
+
+		steps{
+
+			}
+
+} 
+
+
+	stage("job3")
+{
+
+		steps{
+
+			}
+
+} 
+
+
+
+
+
+}
+
+
+
+
+
+
+
+}
+
+
