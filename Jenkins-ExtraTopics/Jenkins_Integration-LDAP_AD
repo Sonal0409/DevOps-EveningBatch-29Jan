@@ -1,0 +1,44 @@
+Active Directory (AD) is a Microsoft technology used to manage computers and other devices on a network. It is a primary feature of Windows Server, an operating system that runs both local and Internet-based servers. Active Directory allows network administrators to create and manage domains & users within a network.For example, an admin can create a group of users and give them specific access privileges on the server. As a network grows, Active Directory provides a way to organize a large number of users into logical groups and subgroups, while providing access control at each level.
+
+
+Active Directory Benefits
+Let me elaborate more on the integration and would like to share the steps that I followed.
+
+Go to Jenkins Dashboard URL >> Manage Jenkins >> Configure Global Security.
+Click on ‘Enable Security’ and select ‘Active Directory’ from Security Realm.
+Fill all the details in Domains section as received by Windows Administration team :
+Domain Name: **********
+
+Domain controller: ********************
+
+Bind DN: CN=UserName,OU=Users,OU=**,DC=***,DC=*****,DC=****
+
+Bind Password: ************
+
+TLS Configuration: (InSecure) Trust all Certificates
+
+Note: Here, UserName is Service account name through which we need to setup AD Authentication for Jenkins Dashboard.
+
+Now please click on ‘Test Domain’. This will reply back as “Success” if all the entries are correct otherwise check with Windows team.
+
+4. Now Go to Authorization section >> Matrix based security
+
+Here we can segregate the Access level as per the task matrix. We have segregated in 3 levels.
+
+4(a). Anonymous Users: View access only [No Need to login]
+
+4(b). Authenticated Users: View Access only [Users Login with Company’s LAN ID]
+
+4(c). In.Jenkins.Admin: DevOps/Release team to perform Build/Deploy tasks.
+
+Click on ‘Add users or groups’ to add new users and AD groups. Click on Apply and Save.
+
+That’s it. Now the users can access Jenkins Dashboard through their LAN ID with AD password.
+
+This has made a life simpler for Jenkins administrator in terms of :
+
+Secure and Centralized Authentication mechanism.
+Automatic addition and deletion of users from Jenkins as synced with AD.
+View access for all authenticated users. (User can view all projects, modules and console output)
+No need to maintain local DB in Jenkins.
+Quick check by Development Leads for project specific jobs.
