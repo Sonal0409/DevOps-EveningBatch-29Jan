@@ -1,0 +1,42 @@
+ANT Demo with Java
+
+Create a Java project
+
+in the project create a Java class with package name as antDemo
+
+package antDemo;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		System.out.println("Executing Demo Ant");
+
+	}
+
+}
+
+Right click on project and create a new XML file with name as build.xml
+
+Right click on project and create a folder with name as staging.
+
+Add the below content in build.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>	
+<project default="run" name="antDemo">
+	<target name="run" depends="compile"></target>
+	  <java classname="antDemo.Demo1"> 
+	    <classpath path="staging"></classpath>
+	 </java>
+	<target name="compile">
+	<javac includeantruntime="false" srcdir="./src" destdir="staging"></javac>
+	</target>
+	</project>
+
+
+
+Make sure class name and staging folder name is correct in the XML file.
+
+Right click on Xml file and build as Ant build.
