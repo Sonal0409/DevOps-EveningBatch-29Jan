@@ -1,0 +1,86 @@
+
+1. It is better that you write and maintain your pipeline code in Github, so that many team members can collaborate to the pipeline
+2. it allows version control the changes done on pipelines.
+
+3. How will jenkins read pipeline code from github?
+
+Jenkins uses the concept of Jenkinsfile
+
+It is a simple text file. it has no extention 
+Name is preffered as Jenkinsfile
+This is the file in which we will maintain pipeline code ->in the Version control tool
+
+
+Jenkins--> pipelinetemplate--> from github fetch jenkinsfile--> execute pipeline code for you.
+
+==========================================================
+
+Master and Agent Set up
+=============================================================
+
+Step 1: create a workder/agent node (VM of type Amazon linux2) on AWS
+
+Step 2: Install git and java on worker node
+
+# yum install git -y
+# sudo amazon-linux-extras install java-openjdk11
+
+Step 3: Create remote root directory on the worker & give permissions for access
+
+cd /tmp
+
+mkdir jenkinsdir
+
+Path: /tmp/jenkinsdir
+
+Give permission to remote root directory
+
+chmod -R 777 /tmp/jenkinsdir
+
+Step 4: Go to master machine and update Jenkins URL
+
+Manage Jenkins> Configure System > update the latest jenkins URL to the current url > save the page
+
+
+Step 5: On master machine open Agent port
+
+Manage Jenkins> Configure Global Security> scroll down to agents > select random and save the page
+
+Step 6: Configure worker/agent node on master
+
+Manage Jenkins> Manage nodes and clouds
+
+Number of executors= executor = Job ==> 1
+remote root directory : /tmp/jenkinsdir
+label : linux_node
+Usage: only build jobs with matching labels
+
+
+Launch method: launch agents via SSH
+
+Host: private IP of agent node
+
+Credentials: click on Add button > click on jenkins
+
+Select Kind : SSH username and private key
+
+username: ec2-user
+
+Private key: you will get the private key of the agent node in your local laptop> downloads folder
+
+got the downloads folder of laptop, search for the key(.pemfile)
+
+open the file with notepad and copy the entire text
+
+paste the text in jenkins > under private key
+
+
+Now select the credials from the drop down.
+
+
+step 7: Host Key Verification Strategy
+
+
+Step 7: check if connection is succesfull
+
+Step 8: add agent in the piepline
