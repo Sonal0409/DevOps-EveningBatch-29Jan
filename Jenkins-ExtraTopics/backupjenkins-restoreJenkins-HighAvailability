@@ -1,0 +1,56 @@
+Create a new server and install jenkins on it
+
+Create some jobs on the jenkins server
+
+Create an S3 bucket on AWS to store the back up of jenkins directory
+
+TO allow AWS ec2 server to write into AWS s3 bucket we need to
+
+> Create a IAM role for amazons3fullaccess for EC2
+
+> Attach the role to jenkins Ec2 server-->actions-->security-->IAM role
+
+
+
+Now stop jenkins server from terminal
+====================================
+# systemctl stop jenkins
+
+# tar -zcvf jenkins-backup.tar.gz /var/lib/jenkins
+# ls
+# aws s3 cp jenkins-backup.tar.gz s3://jenkins-backup-demo/jenkins-backup.tar.gz
+
+Check the s3 bucket-> it will have the back up
+
+Now create a new instance and add the below script in user data. This will install and start jenkins. It will take few mins
+
+#!/bin/bash
+
+sudo yum update -y
+sudo yum install git -y
+sudo amazon-linux-extras install java-openjdk11 -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum install jenkins -y
+
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+Once you are able to access jenkins on browser, go to the terminal now:
+
+# systemctl stop jenkins
+
+# aws s3 cp s3://jenkins-backup-07oct/jenkins-backup.tar.gz jenkins-backup.tar.gz
+
+# ls
+
+# rm -rf /var/lib/jenkins
+
+# tar -zxvf jenkins-backup.tar.gz -C /
+
+# systemctl start jenkins
+
+
+
+
+
