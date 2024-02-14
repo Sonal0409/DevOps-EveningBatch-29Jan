@@ -1,0 +1,94 @@
+Docker-compose
+
+If you want to create multiple containers from different images at one go, you will make use of docker tool → docker COMPOSE
+
+
+Write a file with information of what container we want, what should be image, port, volume, env variable
+
+This file is written in YAML
+It is not a programming language
+Its not a scriptitng language
+Its a file format
+It store the data in key and value format
+
+Name of the file is : docker-compose.yml
+
+Docker compose is a tool to be installed on Docker host
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+
+Create a compose file
+
+mkdir composedemo
+cd composedemo
+vim docker-compose.yml
+
+version: '2'
+
+services:
+
+  compose-test:
+   image: centos:7
+   links:
+    - compose-db
+   command: sleep infinity
+  compose-db:
+   image: redis
+   expose:
+    - "6379"
+
+
+
+Press esc :wq!
+
+$ docker-compose up -d
+
+$ docker-compose ps
+
+$ docker-compose exec compose-test /bin/bash 
+
+OR
+
+$ docker-compose exec compose-test sh
+
+On the test container we need to ping DB container (6379)
+
+To do this we need to install ncat package
+
+$ yum install nc -y
+
+Use ncat command to connect to container with name compose-db
+
+$ nc compose-db 6379
+
+
+
+
+ping
++PONG
+
+set name sonal
++OK
+
+set day sunday
++OK
+
+get name
+$5
+sonal
+
+get day
+$6
+sunday
+
+Ctl C
+
+Exit ⇒ out of container
+
+Stop & Delete all containers created using docker-compose file
+
+$ docker-compose down
