@@ -1,0 +1,90 @@
+Service is an Object is kubernetes that allows communication to the pods from outside the clsuter.
+
+apiVersion: v1
+kind: Service
+metadata: 
+ name: mysvc1
+spec:
+selector:
+  type: webserver
+ type: ClusterIP  
+ ports:
+ - targetPort: 80  # container port
+   port: 80   # service port
+
+
+
+ClusterIp : It is a service that allows pods to communicate within the cluster 
+Ip address internal to the cluster
+you cannot access this IP outside the cluster.
+
+
+
+> Outside the cluster:
+we cannot reach to the pod application via its ipadress:portnumber
+we cannot reach to the pod application via the cluster IP and port number
+
+How to access pods from outside the cluster?
+
+We will use NodePort Service type
+NodePort : It is a type of service in which users can communicate to the pod outside the clsuter
+
+A nodeport service:
+
+ > creates a cluster Ip
+ > allocates a portnumber of every node of cluster 
+ > Node port range in K8s is 30000 to 32767
+
+ > using this node port and external IP of any worker node, users can access the pod from outside cluster 
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: mysvc
+spec:
+ type: NodePort
+ ports:
+  - targetPort: 80
+    port: 80
+ selector:
+  type: webserver
+
+Load Balancer:
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: mysvc-lb
+spec:
+ type: Loadbalancer
+ ports:
+  - targetPort: 80
+    port: 80
+ selector:
+  type: webserver
+
+
+
+Service  :
+
+ > for communication with the pods outside or inside the cluster 
+
+ > 2 pods to communicate within the cluster -> cluster IP
+
+ > Service find its endpoints --> using the labels
+
+ > service endpoints = PODs with matching labels 
+
+ > Service will map port to target container port 
+
+ > For communication otuside the cluster use Nodeport/ LoadBalancer
+ 
+We will have aport open on every node 
+
+user : VM ipaddress:Nodeport 
+
+if load LoadBalancer
+just use external Ip to send request to service --> pod
