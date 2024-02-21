@@ -1,0 +1,188 @@
+10+ experience: Role - Director - Principal Platform Software Engineer
+
+Responsibilities
+
+Build cutting-edge customized tooling solutions to run complex workloads at scale across hybrid cloud environments to enhance software development, testing, and deployment efficiency
+Profile components of these workloads to identify bottlenecks and inefficiencies and develop solutions to improve overall time and resource utilization
+Develop robust and scalable systems for building and managing software artifacts like Linux packages, container images and Python wheels
+Oversee the maintenance of leading continuous integration systems and ensure seamless integration with other systems and tools for optimal performance
+Design and implement streamlined industry-standard practices and policies for DevOps, GitOps and MLOps across various teams and functions.
+Solid understanding of fundamental CI/CD, GitOps, and DevOps concepts and experience with building pipelines using technologies such as Jenkins and CircleCI
+Deep understanding of provisioning infrastructure in a hybrid-cloud environment, infrastructure-as-code (IaC) principles, and familiarity with relevant technologies such as Ansible and Terraform
+Strong understanding of containers and familiarity with container orchestration in cloud environments
+Strong technical acumen with Kubernetes and hands on experience with deploying and managing services on clusters using tools like Helm and ArgoCD
+Work closely with stakeholders to assess and implement enterprise-level systems that align with the organization's goals and objectives
+Proven ability to lead technical teams and mentor junior members
+Proven startup experience in scaling and supporting engineering teams, with the ability to lead by example and foster a high-performance culture
+
+===================================
+ 7-10 years experience
+
+DevOps
+
+Solid experience as a DevOps Engineer in a 24x7 uptime AWS environment, including automation experience with configuration management tools.
+
+Strong scripting skills and automation skills.
+
+Expertise in Linux system administration.
+
+Beneficial to have
+
+Basic DB administration experience (MySQL)
+Working knowledge of some of the major open-source web containers & servers like apache, tomcat and Nginx.
+Understanding network topologies and common network protocols and services (DNS, HTTP(S), SSH, FTP, SMTP).
+Experience in Docker, Ansible & Python.
+
+Role & Responsibilities
+
+Deploying, automating, maintaining and managing AWS cloud-based production system, to ensure the availability, performance, scalability and security of production systems.
+Build, release and configuration management of production systems.
+System troubleshooting and problem-solving across platform and application domains.
+Ensuring critical system security using best-in-class cloud security solutions.
+
+====================
+
+
+
+7+ years of experience
+================
+
+Serving as a technical team member in the development team, customer engagements, and contributing your knowledge and expertise towards the project’s success. 
+Implementing containerized workflows using technologies such as Kubenetes, Docker, Ansible, Helm, Jenkins, Travis CI , and other open-source solutions. 
+Diagnosing environmental issues and introduce/implement technologies to solve them. 
+Staying up-to-date on the latest container platform releases and containerization techniques. 
+Provision and maintenance of DevOps Infra
+
+
+4+ years of relevant experience
+Linux administration skills, preferably in Debian and RHEL 
+Experience in Deploy, automate and maintenance of applications in cloud native environment like IBM Cloud/Google Cloud Platform/AW 
+Good in building CI/CD pipelines 
+Knowledgable in applying security practices/techniques in containerization solutions 
+Experienced with Openshift, Kubenetes, Github, Jenkins, Ansible, Helm Charts, Python, Shell scripts, Travis CI 
+Experience with IaaS, PaaS, and cloud technologies 
+Experience with distributed application concepts and DevOps tools 
+Excellent writing and communication skills 
+Demonstrable troubleshooting and debugging ability 
+General knowledge of web services, HTTP and RESTful services 
+Experience with or knowledge of Agile Software Development methodologies 
+Familiarity with LogDNA/Sysdig/Prometheus for cluster analysis in a Kubernetes environment” 
+Working knowledge of Ansible based install/deployment automation. 
+
+===================
+6+ years
+=======================
+
+Proficient in any Cloud Platform- GCP/AWS/Azure preferred.
+Experience with coding in Terraform.
+Experience in CICD pipelines.
+Experience in supporting Terraform Enterprise, Sentinel, Shared Infrastructure, and Network in Cloud.
+Good experience in automating Operational tasks.
+Have strong insights into SRE principles.
+Familiarity with SDLC processes.
+Good understanding of network services on cloud including VPCs, subnets and firewalls.
+Certification on a Terraform is preferable.
+Excellent communication and influencing skills.
+Ability to work under pressure and part of multicultural team.
+Ability to provide technical leadership in major incident investigation, problem, and change management activities.
+
+
+4 years experience
+================
+
+Responsibilities:
+
+ Planning, analyzing, design, testing, and deploying
+ Building, scaling, and securing application cloud infrastructure
+ Building and maintaining automated CI/CD pipelines
+ Investigating and resolving technical issues
+ Providing support performing root cause analysis for production errors
+ Building tools to improve customer experience
+ Developing software to integrate with internal back-end systems
+ OS hardening, vulnerability scanning, system auditing
+ Evaluating new technology alternatives
+ Implementing new cloud-based initiatives
+ 
+ Skills:
+
+ Containerization concepts
+ Docker proficiency
+ Kubernetes architecture and components
+ Kubernetes deployment manifests
+ Container orchestration and scaling concepts
+
+===================
+
+
+
+Key Responsibilities:
+
+Build and Deployment Management: Oversee the build and deployment pipelines, ensuring they are efficient, reliable, and well-documented.
+
+Manual Deployments: Perform manual deployments when necessary, troubleshoot issues, and ensure successful application releases.
+
+IIS Configuration: Configure and manage Internet Information Services (IIS) for hosting web applications, ensuring optimal performance and security.
+
+Source Code Repository: Manage source code repositories using BitBucket, including branching, merging, and code review processes.
+
+Continuous Integration: Set up and maintain continuous integration (CI) pipelines using Jenkins, automating build, test, and deployment processes.
+
+Release Automation: Utilize Octopus Deploy to automate and orchestrate releases, ensuring consistent deployments across different environments.
+
+Infrastructure as Code (IaC): Implement Infrastructure as Code practices using tools like Terraform or CloudFormation to manage infrastructure provisioning and configuration.
+
+Monitoring and Logging: Implement monitoring and logging solutions to track system performance, detect issues, and proactively respond to incidents.
+
+Security and Compliance: Collaborate with security teams to ensure that DevOps practices align with security and compliance requirements.
+
+Documentation: Maintain comprehensive documentation for deployment processes, configurations, and infrastructure setup.
+
+Skills Required:
+
+4+ years of hands-on experience as a DevOps Engineer.
+Proficiency in configuring and managing IIS.
+Strong experience with BitBucket for source code management.
+Proven expertise in Jenkins for continuous integration.
+Familiarity with Octopus Deploy or similar release orchestration tools.
+Knowledge of Infrastructure as Code (IaC) principles and tools.
+Solid understanding of cloud platforms (e.g., AWS, Azure, or Google Cloud).
+Excellent problem-solving skills and attention to detail.
+Strong communication and teamwork skills.
+DevOps certifications (e.g., AWS Certified DevOps Engineer, Azure DevOps Engineer) are a plus.
+
+==============================
+
+2 years of experience
+================
+
+
+
+Assist in maintaining and enhancing the existing build framework utilizing Git, Jenkins, GNU make, and Bazel.
+Participate in Linux/Unix Systems Administration tasks.
+Help identify and integrate open-source or third-party build and developer tools with existing systems to enhance engineering efficiency.
+Contribute to the design and development of resilient Continuous Integration/Continuous Deployment (CI/CD) pipelines for various products.
+Support in responding to operational events and troubleshooting/resolving issues
+
+Basic knowledge of Git, Jenkins, Ansible and scripting using languages like Linux shellan Python
+Hands-on Knowledge on Linux Operating Systems (Ubuntu, Redhat, CentOS)
+Familiarity with CI/CD pipeline concepts and basic troubleshooting.
+Understanding of Release Engineering methods on Git (GitFlow or customized GitFlow).
+Knowledge of Docker, Kubernetes, and Terraform, focusing on basic virtualization and infrastructure as code (IaC) concepts.
+Strong written and verbal communication skills.
+Desired Skills
+Development experience in C/C++ is an asset.
+Basic understanding of cloud systems (AWS) and their scalable deployment.
+Familiarity with monitoring strategies for complex systems.
+An interest in the security domain or security testing is advantageous.
+Eagerness to learn and grow within a team environment, with a focus on collaborative problem-solving.
+
+=========================
+
+Setting up CI/CD pipeline for Multistage Zero Downtime Deployments
+Implementation of Agile Software Development methodology
+Cloud Infrastructure deployments
+Systems Monitoring and Alerting
+Database Administration
+Web Application Firewalls and Infrastructure Security implementations
+Faster Disaster Recovery strategies
+Logs Visualization and Data Analytics

@@ -1,0 +1,123 @@
+DevOps & Cloud Engineer Passionate About Building and Scaling Tech Infrastructure Linux 🐧 AWS 🖥️ Python 🐍 Docker 🐳 Kubernetes ⚓Terraform 🏗
+
+DevOps Engineer | Cloud Engineer | AWS | Docker | Kubernetes | CI/CD | Terraform | Masters of Software Engineering
+
+(Immediate Joiner)Devops Engineer | Jenkins | Docker | Kubernetes | Git | Git Hub | UrbanCode Deploy | Jira | Confluence Page | Linux | Ansible | Terraform | AWS
+
+| DevOps Engineer | Ubuntu | Git | CI/CD | Ansible | Terraform | Cloud (AWS) | Kubernetes | Docker | Security | Prometheus | Grafana | ELK |
+
+"Skilled in Site Reliability Engineering (SRE) and Cloud Architecture, with expertise in DevOps, VMware, Infrastructure, Security, Automation, Monitoring, Python, GitOps, and Cloud Operations (CloudOps)."
+
+
+Tech Enthusiast, experienced with OpenStack, Google Cloud, Kubernetes, OpenShift, CSI, Storage and Server Virtualization
+
+Lead Infrastructure Automation Engineer | Expert in IAM, Automation, Shell Scripting, Jenkins, Git, Ansible and Azure Devops | Cyber Security Enthusiast
+
+DevOps || DevSecOps || Azure || AWS || Microsoft AZ-900 certified || Terraform || Gitlab || Docker || Kubernetes
+
+Summary:
+=====================
+
+Aspiring Automation Engineer with 6+ years of experience in software development in test, who is looking to learn new advancements and trends in the industry and contribute to the betterment of working organization. Skilled in Python, Docker, Kubernetes, Storage, Shell Scripting, Selenium, Behave, Gherkin, TDD, BDD, JSON, pytest, Jenkins, Saas, REST API, Desktop Application Testing, Web Application Testing and Frame work Designs.
+
+
+As a passionate and driven DevOps Engineer, I am dedicated to staying up-to-date on the latest trends and technologies in the field. With a deep proficiency in tools such as Linux, Git, GitHub, Kubernetes, Docker, Terraform, AWS, Jenkins, Prometheus, Grafana, ELK and MongoDB, I am equipped to design, implement, and maintain highly scalable and resilient infrastructure.
+As a recent graduate, I am excited to bring my fresh perspective and enthusiasm to any team. I am a quick learner and thrive in fast-paced environments, where I am able to collaborate with like-minded individuals to solve complex challenges. My ability to effectively communicate with both technical and non-technical stakeholders allows me to bridge the gap between development and operations teams.
+I am passionate about continuous improvement and enjoy exploring new technologies to optimize the development and delivery process. With a focus on automation, monitoring, and testing, I am dedicated to ensuring the highest levels of quality and reliability in all of my work.
+
+============================
+
+Summary
+========================
+
+☁️ 𝐌𝐚𝐬𝐭𝐞𝐫𝐢𝐧𝐠 𝐭𝐡𝐞 𝐂𝐥𝐨𝐮𝐝, 𝐎𝐧𝐞 𝐓𝐫𝐚𝐢𝐧𝐢𝐧𝐠 𝐏𝐫𝐨𝐠𝐫𝐚𝐦 𝐚𝐭 𝐚 𝐓𝐢𝐦𝐞 ☁️
+My relentless pursuit of cloud technology mastery led me to embark on a transformative journey. I've embraced not one, not two, but three intensive DevOps and Cloud Engineering training programs to prepare for this career change. 
+
+𝐖𝐡𝐚𝐭'𝐬 𝐍𝐞𝐱𝐭 🚀
+Currently residing in the UK, I'm fully committed to transitioning my career and actively seeking a role as a DevOps Engineer/Cloud Developer. 
+
+𝐖𝐡𝐲 𝐲𝐨𝐮 𝐬𝐡𝐨𝐮𝐥𝐝 𝐡𝐢𝐫𝐞 𝐦𝐞?
+Cloud and Infrastructure Management? I've got it covered: AWS, EC2, S3, Lambda, VPC, RDS, Elastic Load Balancer, and more. Infrastructure as Code? Terraform and CloudFormation are in my toolkit. 
+DevOps and Automation? Docker, Kubernetes, GitHub Actions, and AWS DevOps tools are second nature now. And when it comes to programming languages, I've got Python and JavaScript down. 
+
+But what sets me apart goes beyond the technical skills. Here are the top qualities I bring to the table:
+
+➡️ Systems Thinking & Process Improvements: My experience in operations and leadership has honed my ability to see the big picture and identify opportunities for process enhancements. I excel at streamlining workflows and driving efficiency.
+
+➡️ Cross-functional Collaboration: Bridging the gap between technical and non-technical stakeholders is where I thrive. I understand the importance of effective communication and teamwork, ensuring that everyone is aligned towards achieving common goals.
+
+➡️ Technical Proficiency: My relentless pursuit of cloud technology mastery has equipped me with the technical skills needed to navigate complex cloud infrastructures and orchestrate seamless solutions.
+
+➡️ Project Management: Whether it's overseeing a team during a planned shutdown or leading complex cloud projects, I bring strong project management skills to the table. I ensure tasks are completed efficiently and within schedule.
+
+➡️ Continuous Learning: In the ever-evolving tech landscape, I'm dedicated to continuous learning. I embrace new challenges and stay updated with the latest industry trends.
+
+These skills and qualities, combined with my technical expertise, make me a valuable asset to any team. I'm ready to contribute my diverse background and knowledge to drive your Cloud initiatives forward.
+
+𝐋𝐞𝐭'𝐬 𝐂𝐨𝐧𝐧𝐞𝐜𝐭
+Feel free to DM me here or email me at  ....
+
+=====================
+
+With 19+ years in IT, I have excelled in diverse areas. Notable achievements include managing data center migrations, designing Azure and AWS cloud solutions, leading DR implementations, driving automation, and building SRE teams.
+
+My expertise in data center migration is evident in successful large-scale projects, ensuring seamless transfers with minimal downtime and data loss.
+
+As cloud computing gains prominence, my proficiency in Azure and AWS enables scalable, cost-effective solutions for organizations.
+
+I have overseen robust DR implementations, mitigating risks and minimizing downtime to ensure business continuity.
+
+Automation has been a key focus, streamlining processes, reducing errors, and optimizing efficiency for enhanced productivity.
+
+Building SRE teams has been a significant accomplishment, combining software engineering practices with operational excellence.
+
+My commitment to innovation is seen in onboarding new tools, and consistently improving product performance.
+
+In summary, with 18+ years of experience, I have achieved success in data center migration, cloud solutions, DR implementation, automation, and SRE team building, positioning me as a versatile IT professional.
+
+=============================
+
+To be an astute learner and the best performer in your organization. So that I can build an innovative career in your esteemed organization by using my skills and other significant talents. Moreover, to achieve high carrier growth through a continuous learning process and keep myself dynamic, visionary and competitive with the changing scenario of the world. I love technology, which has brought me the passion for creating new things which brings me more satisfaction and interest towards doing this. In terms of C Programming Language I also have skill in development and SEO(Search Engine Optimization)
+
+Working as a DevOps engineer.
+* Performing the disaster recovery process in Azure. 
+* Automating process through shell scripting.
+* Responsible for process automation using Powershell.
+* Responsibilities for new versions artifacts deployment to the servers on a monthly basis and hot fixes.
+* Responsible for the chef cycle run on each server.
+* Monitoring websites and check failure logs defects CMS level as well as server level.
+* IIS app pool site creation, HTTP redirect setup, bindings setup.Working as a DevOps engineer. 
+* Performing the disaster recovery process in Azure.
+ * Automating process through shell scripting. 
+* Responsible for process automation using Powershell. 
+* Responsibilities for new versions artifacts deployment to the servers on a monthly basis and hot fixes. 
+* Responsible for the chef cycle run on each server.
+ * Monitoring websites and check failure logs defects CMS level as well as server level.
+ * IIS app pool site creation, HTTP redirect setup, bindings setup.
+Skills:
+ Secure Coding · Open-Source Software · Problem Solving · Communication · Workload Prioritization · Continuous Delivery (CD) · Infrastructure as a Service (IaaS) · Software Updates · Software Deployment · Analytical Skills · Kibana · Artifactory · Microservices · Linux System Administration · Microsoft Azure · DevOps · Automation
+
+==============================
+
+• Ideally 4+ Azure DevOps expertise with CI/CD Pipeline deployment experience
+• strong knowledge of Azure Fundamentals, Docker and Kubernetes, Azure Container Service, AKS, Jenkins, Maven, Agile methodology and latest DevOps trends.
+• Expertise to Build and deploy to Azure Kubernetes Service with Azure Pipelines
+• Expertise with Azure CLI, Azure REST APIs, Azure Resource Manager template, Azure billing/cost management and the Azure Management Console
+• Exposure to Monitoring and Logging tools
+• Demonstrated knowledge on all aspects of DevOps tool chain (Business planning, Continuous integration, Continuous delivery, Test automation, Monitoring)
+• Experience in DevOps automation tools and very well versed with DevOps Framework.
+
+==============================
+As a DevOps Engineer, I bring a unique combination of technical expertise and a passion for efficient and reliable systems. Experienced in collaborating directly with clients, I excel in setting up and configuring GitHub runners, GitHub actions, Ansible, Grafana, Prometheus, Loki, K8S, and Helm on dedicated servers. By leveraging my deep knowledge of automation and monitoring technologies, I have successfully implemented tailored solutions that optimize development workflows, enhance system reliability, and improve performance for clients. My ability to understand client requirements, provide personalized recommendations, and consistently deliver reliable results has earned me positive feedback and fostered long-term client relationships. With a strong belief in the power of sharing knowledge, I actively contribute to personal growth and embrace the philosophy of seizing every day as an opportunity for success. With excellent communication skills, self-confidence, and analytical thinking, I am known for my determination and eagerness to learn, making me an ideal candidate for any DevOps engineering role.
+===============================
+
+
+Senior software engineer with 2.7+ years of industry expertise, excelling in developing robust and scalable software solutions, specializing in Java and Microservices with Spring Boot. I deeply understand these core technologies, enabling me to design and implement efficient, high-performance applications. I am also proficient in Python, MongoDB, SQL, REST API, Docker, Jenkins, Ansible, and Terraform, which complement my skill set. Constantly seeking opportunities to expand my skill set and stay at the forefront of technology trends, I am dedicated to driving excellence in every project I undertake.
+
+=========================
+
+I come with 1.5+ years of experience in the IT industry. I have a strong understanding of AWS Cloud and Kubernetes environment, and I am proficient in a variety of DevOps tools and technologies. I am passionate about automating and streamlining the development and deployment process, and I am always looking for new ways to improve the efficiency and reliability of our systems.
+
+In my current role, I was responsible for the development and maintenance of a large-scale Kubernetes cluster. I worked with a team of engineers to design, implement, and test the cluster, and I was responsible for its day-to-day operations. I also developed and maintained a number of automation tools that helped to streamline the development and deployment process.
+
+I am a highly motivated and results-oriented individual with a strong work ethic. I am also a team player and I am always willing to help others.
