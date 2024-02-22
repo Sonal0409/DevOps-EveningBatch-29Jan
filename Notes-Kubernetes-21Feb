@@ -109,3 +109,152 @@ Service for HPA scenario:
 Command to generate the load:
 
 # kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://10.8.10.18:80; done"
+
+
+Helm:
+==========================
+
+> Now we have to create a new Helm chart using which we are going to deploy our Custom Docker image. Follow below commands to create a new helm Chart
+
+# helm create webapp
+# ls -al webapp
+
+> By default, you will get a lot of files inside this helm chart but we are going to delete those so that we don’t see error while deploying these.
+
+# cd webapp/
+# pwd
+# cd templates/
+# ls -al
+# rm -rf *.yaml NOTES.txt tests ../values.yaml 
+# ls -la
+
+> Create deployment.yaml inside templates directory with below content
+
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: ais-ifm
+
+  labels:
+
+    app: ais
+
+spec:
+
+  replicas: 3
+
+  selector:
+
+    matchLabels:
+      app: ais
+      tier: web
+
+  template:
+
+    metadata:
+
+      labels:
+       app: ais
+       tier: web
+
+    spec:
+
+      containers:
+
+      - name: ais
+
+        image: edu123/docker-image
+
+        ports:
+
+        - containerPort: 8090
+
+        resources:
+
+          limits:
+
+            cpu: 1000m
+
+            memory: 600Mi
+
+          requests:
+
+            cpu: 500m
+
+            memory: 300Mi
+
+
+
+
+Create a service YAMl
+=======================
+
+vim service.yml
+
+---
+
+apiVersion: v1
+
+kind: Service
+
+metadata:
+
+ name: mysvc
+
+spec:
+
+ type: NodePort
+
+ ports:
+
+  - targetPort: 8080
+
+    port: 8080
+
+ selector:
+  app: ais
+
+
+[OPTIONAL]
+You can check if your chart is correct or not
+
+# cd ../..
+
+# helm install mydemo webapp
+
+
+> we will also push the helm charts folder to the git hub repo
+
+come out of templates and webapp folder
+
+> cd ../..
+
+> you will be in the repo folder
+
+Execute git commands to commit the webapp folder and push to github
+
+# git add .
+# git commit -m "done helm"
+# git push origin master
+username: 
+password: personal access token
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
