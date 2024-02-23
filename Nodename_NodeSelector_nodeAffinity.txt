@@ -1,0 +1,213 @@
+
+
+Scheduling in kubernetes using:
+****************
+
+NodeName:
+
+Create a yaml file as given below : 
+In the spec section of pod, write the node name where you want to scehdule the pod
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeserve
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kubeserve
+  template:
+    metadata:
+      name: kubeserve
+      labels:
+        app: kubeserve
+    spec:
+      nodeName: gke-cluster-1-default-pool-e18bdb3b-3h5s
+      containers:
+      - image: leaddevops/kubeserve:v1
+        name: app
+
+save the file and execute the yaml
+
+you will see both the pod is scheduled on your mentioned node
+
+Node Selector:
+************************
+
+$ kubectl get nodes
+
+every node has multiple labels:
+
+$ kubectl describe node <node Name>
+
+
+Add your custom labels to all the nodes:
+
+we will add label as  disk=hdd ===>  to node 1 and node 3
+we will add lable as  disk=ssd ===> to node 2
+
+$ kubectl label node <nodename1> disk=hdd
+
+$ kubectl label node <nodename3> disk=hdd
+
+$ kubectl label node <nodename2> disk=ssd
+kubectl label node gke-cluster-1-default-pool-e18bdb3b-3l9r disk=ssd
+
+Now create a yaml file to deploy pods with node selector
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeserve
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kubeserve
+  template:
+    metadata:
+      name: kubeserve
+      labels:
+        app: kubeserve
+    spec:
+      nodeSelector:
+       disk: ssd
+      containers:
+      - image: leaddevops/kubeserve:v1
+        name: app
+
+
+Node Affinity
+*****************
+
+Here : requiredDuringSchedulingIgnoredDuringExecution
+
+this means we will schedule the pods on the matching labels node only but once the pod is running on the pod 
+and if labels are removed, still pod will continue to run on the node (this is ignored during execution)
+
+Create a pod with affinity as required
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: disk
+            operator: In
+            values:
+            - ssd
+  containers:
+  - name : c1
+    image: nginx
+
+
+Now change the value under node selector terms
+where you want to deploy a pod in a node where disk is not ssd
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: disk
+            operator: NotIn
+            values:
+            - ssd
+  containers:
+  - name : c1
+    image: nginx
+
+Now pod will be placed on anode 1 or node 2 where disk is hdd
+
+
+Now give a wrong key value and chnage operator to In
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: disk
+            operator: In
+            values:
+            - ssd2
+  containers:
+  - name : c1
+    image: nginx
+
+
+Pod will be in pending state and will not be scheduled.
+
+
+
+
+prefferend during scehduling example
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+         matchExpressions:
+          - key: disk
+            operator: In
+            values:
+            - ssd234
+  containers:
+  - name : c1
+    image: nginx
+
+
+Multiple labels. 
+
+Set one more label on the node
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+         matchExpressions:
+          - key: disk
+            operator: In
+            values:
+            - ssd234
+      - weight: 1
+        preference:
+         matchExpressions:
+          - key: disk
+            operator: In
+            values:
+            - ssd234
+  containers:
+  - name : c1
+    image: nginx
+
