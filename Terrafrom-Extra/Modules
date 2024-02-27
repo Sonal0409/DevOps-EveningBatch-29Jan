@@ -1,0 +1,176 @@
+
+Modules in Terraform:
+
+=========================================================
+
+# cd
+
+# mkdir modules dev prod
+
+# cd modules
+
+# mkdir myec2
+
+# cd myec2
+
+# vim myec2.tf
+
+data "aws_ami" "my_ami" {
+
+most_recent = true
+
+owners = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+}
+
+
+
+resource "aws_instance" "myec2" {
+  ami           = data.aws_ami.my_ami.id
+  instance_type = var.instance_type
+
+  tags = {
+    Name = "terraform"
+  }
+}
+
+Save the file
+
+vim variables.tf
+
+variable "instance_type" {
+
+ default = "t2.micro"
+
+}
+
+save the file
+
+# pwd
+
+Path of the module  : /root/modules/myec2
+
+
+===============
+
+
+if we dont want the variable values to be replaced by a user then we make use of local block in tf file.
+
+# cd modules
+
+# mkdir mysg
+
+# cd mysg
+
+resource "aws_security_group" "sg_ec2" {
+  name        = "allow_tls"
+  description = "security group rule for ec2 "
+
+  ingress {
+    from_port        = local.port
+    to_port          = local.port
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+}
+resource "aws_security_group" "sg_lb" {
+  name        = "allow_tls123"
+  description = "security group rule for lb "
+
+  ingress {
+    from_port        = local.port
+    to_port          = local.port
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+}
+locals{
+
+port = 8443
+
+}
+
+Save the file
+
+vim variables.tf
+
+variable "port" {}
+
+
+# pwd  :  /root/modules/mysg
+
+======================================
+
+Now call the modules for each environment:
+
+
+# cd 
+
+# mkdir dev [ if directory not available]
+
+# cd dev
+
+# vim main.tf
+
+provider "aws" {
+  region = "us-east-1"
+  shared_credentials_files = ["~/.aws/credentials"]
+}
+
+
+module "myec2module" {
+
+source = "/root/modules/myec2"
+
+}
+
+module "mysgmodule" {
+
+source = "/root/modules/mysg"
+port = 22
+
+}
+save the file
+
+# terraform init
+
+# terraform apply
+
+
+cd ..
+
+# cd prod
+
+# vim provider.tf
+
+provider "aws" {
+  region     = "us-east-1"
+shared_credentials_files = ["~/.aws/credentials"]
+}
+
+save the file
+
+# vim main.tf
+
+module "myec2module" {
+
+source = "/root/modules/myec2"
+instance_type = "t2.large"
+}
+
+module "mysgmodule" {
+
+source = "/root/modules/mysg"
+port = 22
+}
+
+Save the file
+
+# terraform init
+
+# terraform plan
+
