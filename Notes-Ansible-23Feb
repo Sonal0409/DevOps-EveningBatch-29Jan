@@ -1,0 +1,365 @@
+Ansible Roles:
+==============================================
+Check you are in ansiuser home directory
+
+# cd
+
+# mkdir roles
+# cd roles
+Create a role apache using ansible-galaxy
+
+#  ansible-galaxy init apache
+
+# cd apache
+
+Delete the directory that  are not needed for this scenario
+
+# rm -rf README.md meta tests
+
+# sudo vim tasks/main.yml
+
+  - name: update apt-get repo
+    command: apt-get update
+    notify: Print a message
+  - name: Install apache2
+    package: name={{pkg_name}} state=present
+  - name: Start the apache2 server
+    service: name={{pkg_name}} state=started
+  - name: Copy the html code on apache2 server
+    template: src=index.html.j2 dest={{dest_path}}
+    notify: Restart Server
+
+
+Save the file
+
+Write the vars section for the playbook:
+=========================
+# sudo vim vars/main.yml
+
+Press i to insert
+pkg_name: apache2
+dest_path: /var/www/html/index.html
+email:
+ - admin@gmail.com
+ - ansible@gmail.com
+ - admin2@gmail.com
+
+
+Save the file
+
+Write the template section:
+==========================
+
+#  sudo vim templates/index.html.j2
+
+
+This is jinja2 template
+
+The webserver is running on {{ ansible_hostname }}
+
+# forloop in jinja2
+# here email is a custome variable in playbook, which will have list of values
+
+{% for item in email %}
+
+The system admin contact email is: {{item}}
+
+{% endfor %}
+
+
+Save the file.
+
+=============================
+Enter data in handlers section
+=============================
+
+# sudo vim handlers/main.yml
+
+  - name: Print a message
+    debug: msg="apt-get repo Update complete"
+  - name: Restart Server
+    service: name={{pkg_name}} state=restarted
+
+
+
+Save the file.
+
+===============================
+
+After this come out in the directory where you are writing playbooks
+
+Note: the playbook that is calling the role is written in directory other than Roles directory
+
+
+Execute the command
+
+# cd
+
+# vim playbookRole1.yml
+
+
+- hosts: webserver
+  become: true
+  roles:
+   - apache
+
+
+Save the file
+
+Execute the playbook, which inturn executes the role.
+
+
+Execute the command to Clone the repository which has all the roles for the project:
+
+Step 1:
+
+# git clone https://github.com/Sonal0409/Ansible-Project.git
+
+Step 2:
+
+# cd Ansible-Project
+
+Run the command to execute the playbook and the roles
+
+# ansible-playbook -i /home/ansiuser/myinventory playbook.yml
+
+
+This completes your second project
+
+Give screenshot of every roles/tasks/main.yml
+
+=============================================
+
+Blocks:
+=======================
+
+Block with when condition:
+ 
+---
+  - hosts: web_servers
+	gather_facts: true
+	tasks:
+  	- block:
+    	- name: Installing htttpd for RedHat os family
+      	yum:
+        	name: httpd
+        	state: present
+    	- name: starting httpd for RedHat os family
+      	service:
+        	name: httpd
+        	state: started
+    	when: ansible_os_family=="RedHat"
+    	become: yes
+  	- block:
+    	- name: Installing apache2 for Debian os family
+      	apt:
+        	name: apache2
+        	state: present
+    	- name: starting apache2 for Debian os family
+      	service:
+        	name: apache2
+        	state: started
+    	when: ansible_os_family=="Debian"
+    	become: yes
+  	- debug:
+      	msg: "Succesfully completed all tasks"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TOMCAT Role Demo
+=============================
+
+Clone the repo with Role directory
+
+# git clone https://github.com/Sonal0409/AnsibleRolesDemo.git
+
+Go inside the repo directory
+
+# cd AnsibleRolesDemo
+
+Create playbook to call tomcat role:
+
+# sudo vim playbookRole2.yml
+
+- hosts: webserver
+  become: true
+  roles:
+   - tomcat
+
+
+Save the file
+
+==================================================
+
+Ansible Vault:
+=========================================
+
+Demo1: Use ansible vault to create a new Encrypted file
+========
+
+# ansible-vault create vault1.yml
+
+Give:
+
+New Vault password:123
+Confirm password: 123
+It open the vim editor for the file, 
+Press i to insert some text like : Confidential data!
+
+Save the file(:wq!)
+
+Now if you will see the contents of the file, they will be encrypted
+
+# cat vault1.yml
+
+Demo 2: User ansible vault command to view the vault1.yml file
+================================
+
+# ansible-vault view vault1.yml
+
+Give the password: 123
+
+Demo3: Create an existing file and ask ansible-vault to encrypt it
+===============================
+
+# echo "file text to be encrypt" > encrypt_me.txt
+
+Use ansible vault command to encrypt:
+
+# ansible-vault encrypt encrypt_me.txt
+
+Give: 
+New Vault password: 123
+Confirm New Vault password: 123
+
+Encryption successful
+
+# cat  encrypt_me.txt
+
+Demo 4: Decrypt the text of the encrypted file
+==============================
+
+# ansible-vault decrypt encrypt_me.txt
+
+# cat encrypt_me.txt
+
+Demo 5: Edit an existing encrypted file”
+===========================
+
+# ansible-vault edit vault1.yml
+# enter password :123
+
+It will open the file, press i to insert the new data
+Save the file.
+File will be encrypted with new changes also
+Demo 6: change the password of encrypted file
+====================================
+#  ansible-vault rekey vault1.yml
+
+Give : 
+Vault password: 123
+New Vault password: 12345
+Confirm New Vault password: 12345
+
+Rekey successful
+
+Demo 7: Store the vault password in a file and pass the file name with ansible-vault command
+
+========================================
+
+# echo "file text to be encrypt" > encrypt_me.txt
+
+Use ansible vault command to encrypt:
+
+# ansible-vault encrypt encrypt_me.txt
+
+Give: 
+New Vault password: 12345
+Confirm New Vault password: 12345
+
+Encryption successful
+
+Save the password in new file
+
+# echo "12345" > my_passwd_file
+
+# ansible-vault view --vault-password-file my_passwd_file encrypt_me.txt
+
+Displays data of the file.
+
+
+=======================================
+
+Execute ansible vault scenario with a playbook:
+======================================
+
+# rm secrets.yml
+
+# vim secrets.yml
+
+Insert data as:
+
+
+username: myansible
+password: myansible@123
+
+
+Save the file (:wq!)
+
+Encrypt the file using ansible-vault
+
+# ansible-vault encrypt secrets.yml
+
+Give password : 123
+Confirm: 123
+
+
+Creat the playbook using the encrypted file
+
+
+- hosts: webserver
+  become: true
+  vars_files:
+   - secrets.yml
+  tasks:
+  - name: Creating a new User on host servers
+    user:
+     name: "{{ username }}"
+     password: "{{ password }}"
+
+Save the file.
+
+Execute the playbook:
+
+# ansible-playbook playbook1.yml --ask-vault-pass
+
+Save the password in the file:
+
+# vim ~/.mypwdfile
+
+Enter the password : 123
+
+Save the file
+
+Execute the playbook:
+
+ansible-playbook playbook1.yml --vault-password-file ~/.mypwdfile
+=========================================
+
+
+
+
