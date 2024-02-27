@@ -1,0 +1,464 @@
+Download and setup terraform on MASTER NODE:
+===========================================
+
+https://developer.hashicorp.com/terraform/downloads
+
+# sudo su -
+
+# wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+# echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+# sudo apt update && sudo apt install terraform
+
+#terraform –version
+
+======================================
+
+Setup the AWS provider
+==================================
+
+Connect to AWS lab and create an IAM user with access key and secret key
+
+===================================
+
+Create
+ the terraform configuration file with provider block
+
+=================================
+
+
+# mkdir myterraformfiles
+# cd myterraformfiles
+# vim provider_aws.tf
+
+
+# configure AWS provider
+
+provider "aws" {
+  region = "us-east-1"
+  access_key = "AKIAUJU24ZR3TN4HE23O"
+  secret_key = "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"
+}
+
+
+Save the file
+
+# terraform init
+
+=================================
+Demo: Ftech the accesskey and secret key from shared credentials file of aws
+
+===================================
+
+# apt-get update
+# apt  install awscli 
+# aws configure
+Give value for access_key
+Press enter
+Give value for secret key, press enter
+No need to give region or format option.
+
+Now credentials for AWS will be set in the .aws directory.
+
+You can check the credentials at 
+
+# cd ~/.aws
+# ls
+
+
+Now go the folder where we have TF config file
+
+# cd myterraformfiles
+
+# vim provider_aws.tf
+
+Remove accesskey and secret key
+
+Add below text
+
+ shared_credentials_files = ["~/.aws/credentials"]
+
+
+The code should look like:
+
+# configure AWS provider
+
+provider "aws" {
+  region = "us-east-1"
+  shared_credentials_files = ["~/.aws/credentials"]
+}
+
+
+Execute below command
+
+# terraform init
+
+
+
+Demo 3: EC2 resource creation using terraform:
+
+Add the below code in the existing procider_aws.tf file.
+
+resource "aws_instance" "myec2" {
+  ami           = "ami-0277155c3f0ab2930"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "terraforminstance1"
+  }
+}
+
+
+
+# terraform apply
+
+Give yes
+
+It will create the resource on AWS
+
+===================================
+
+Demo 4: Data block to pass filtered data to the resource block
+
+
+AKIAUJU24ZR37RKER2DW
+EZtDnEOBA474CMz0g8+ywlqi7jqzbi6YzuWSLUYT
+
+
+# configure AWS provider
+
+provider "aws" {
+  region = "us-east-1"
+  shared_credentials_files = ["~/.aws/credentials"]
+}
+
+# data block will filter data and pass it on to the resoruce block
+
+data "aws_ami" "my-ami" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+}
+
+resource "aws_instance" "myec2" {
+  ami           = data.aws_ami.my-ami.id
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "Instance1"
+  }
+}
+
+
+
+output "aws_instance_state"{
+
+value = aws_instance.myec2.instance_state
+}
+
+output "aws_instance_public_ip"{
+
+value = aws_instance.myec2.public_ip
+}
+
+
+
+Save the file and execute 
+
+# terraform apply
+
+Give yes for approval
+
+AWS instance will be created.
+
+========================================
+
+Demo 5: Create a new resource block for elastic Ip in AWS
+
+# vim eip_aws.tf
+
+resource "aws_eip" "myeip" {
+  vpc = true
+}
+
+
+[Or]
+
+resource "aws_eip" "myeip" {
+  domain = “vpc”
+}
+
+
+# terraform apply -auto-approve
+
+Associate this elastic ip to the existing Ec2 instance
+==========================================
+In the same file eip_aws.tf add the below association:
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.myec2.id
+  allocation_id = aws_eip.myeip.id
+}
+
+
+Save the file
+
+# terraform apply
+
+
+Output block to print attribute values upon creation of resource:
+
+# vim output-demo.tf
+
+output "eipvalue" {
+
+value = aws_eip.myeip.public_ip 
+}
+
+output "eipallocationid" {
+
+value = aws_eip.myeip.allocation_id
+
+}
+
+output "aws_instance_status"{ 
+
+value = aws_instance.myec2.instance_state
+
+}
+
+output "aws_instance_publicip" {
+
+value = aws_instance.myec2.public_ip
+}
+
+# terraform apply
+
+You will see the output values.
+
+===================================
+
+Demo 6
+
+In the same folder create a new file:
+
+# vim variables.tf
+
+variable "region"{
+ default = "us-east-1"
+ }
+
+variable "instance_type"{
+default = "t2.nano"
+}
+
+variable "environment"{
+default = "dev"
+}
+
+Save the file
+
+
+# vim terraform.tfvars
+
+instance_type = "t2.micro"
+
+environment = "test"
+
+
+Save this file.
+
+
+Now use the variables in TF configuration file
+
+
+provider "aws" {
+
+region = var.region
+shared_credentials_files = ["~/.aws/credentials"]
+
+}
+
+data "aws_ami" "my-ami" {
+
+most_recent      = true
+owners           = ["amazon"]
+filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+
+}
+
+resource "aws_instance" "myec2" {
+  ami           = data.aws_ami.my-ami.id
+  instance_type = var.instance_type
+
+  tags = {
+    Name = var.environment
+  }
+}
+
+
+
+output "aws_instance_state"{
+
+value = aws_instance.myec2.instance_state
+}
+
+output "aws_instance_public_ip"{
+
+value = aws_instance.myec2.public_ip
+}
+
+resource "aws_eip" "myeip" {
+domain = "vpc"
+ 
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.myec2.id
+  allocation_id = aws_eip.myeip.id
+}
+
+output "eip_id"{
+
+value = aws_eip.myeip.public_ip
+}
+
+=====================================
+
+Count Index:
+
+========================================
+
+
+provider "aws" {
+
+region = var.region
+shared_credentials_files = ["~/.aws/credentials"]
+
+}
+
+data "aws_ami" "my-ami" {
+
+most_recent      = true
+owners           = ["amazon"]
+filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+
+}
+
+resource "aws_instance" "myec2" {
+  ami           = data.aws_ami.my-ami.id
+  instance_type = var.instance_type
+  count = 5 (0,1,2,3,4)
+  tags = {
+    Name = ${var.environment}-${count.index}  
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ASSIGNEMENT:
+================
+# mkdir variable-demo
+# cd variable-demo
+
+# vim variables.tf
+
+variable "access_key"{
+
+default = "AKIAUJU24ZR36YGWPS3D"
+
+}
+
+variable "secret_key" {
+
+default = "37a4jeARDewK7EDBVzpLfvZni/gv5dq+iSYmYfGE"
+
+}
+
+variable "ami" {
+
+default = "ami-0261755bbcb8c4a84"
+
+}
+
+variable "instance_type" {
+
+default = "t2.micro"
+
+}
+
+
+
+# vim aws_variable.tf
+
+provider "aws" {
+  region = "us-east-1"
+  access_key = var.access_key
+  secret_key = var.secret_key
+}
+
+resource "aws_instance" "myec2" {
+  ami           = var.ami
+  instance_type = var.instance_type
+
+  tags = {
+    Name = "Instance1"
+  }
+}
+
+# terraform plan
+
+
+Create terraform.tfvars file
+
+# vim terraform.tfvars
+
+Instance_type = “t2.large”
+
+
+Again execute terraform plan, actual value is picked up.
+
+
+============================================================
