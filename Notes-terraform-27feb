@@ -1,0 +1,148 @@
+
+resource "aws_vpc" "ed-vpc" {
+  cidr_block = "10.0.0.0/16"
+
+   tags = {
+       Name = "ed-vpc"
+
+               }
+}
+
+
+resource "aws_subnet" "main" {
+  vpc_id     = aws_vpc.ed-vpc.id
+  cidr_block = "10.0.1.0/24"
+  map_public_ip_on_launch = true
+  depends_on = [aws_vpc.ed-vpc]
+  availability_zone = "us-west-2a"
+  tags = {
+    Name = "ed-subnet"
+  }
+}
+
+resource "aws_route_table" "ed-route-table" {
+  vpc_id = aws_vpc.ed-vpc.id
+    tags = {
+    Name = "ed-route-table"
+  }
+}
+
+resource "aws_route_table_association" "a" {
+  subnet_id      = aws_subnet.main.id
+  route_table_id = aws_route_table.ed-route-table.id
+}
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.ed-vpc.id
+  depends_on = [aws_vpc.ed-vpc]
+  tags = {
+    Name = "ed-gw"
+  }
+}
+
+resource "aws_route" "ed-route" {
+  route_table_id            = aws_route_table.ed-route-table.id
+  destination_cidr_block    = "0.0.0.0/0"
+  gateway_id = aws_internet_gateway.gw.id
+}
+
+resource "aws_security_group" "ed-sg" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic and all outbound traffic"
+  vpc_id      = aws_vpc.ed-vpc.id
+
+   ingress {
+
+cidr_blocks       = ["0.0.0.0/0"]
+  from_port         = 443
+  protocol       = "tcp"
+  to_port           = 443
+
+
+
+}
+  ingress {
+
+cidr_blocks       = ["0.0.0.0/0"]
+  from_port         = 22
+  protocol       = "tcp"
+  to_port           = 22
+
+
+
+}
+
+
+  ingress {
+
+cidr_blocks       = ["0.0.0.0/0"]
+  from_port         = 80
+  protocol       = "tcp"
+  to_port           = 80
+
+
+
+}
+
+ egress {
+
+cidr_blocks  = ["0.0.0.0/0"]
+  from_port         = 0
+  protocol       = "-1"
+  to_port           = 0
+
+
+
+}
+
+
+  tags = {
+    Name = "ed-sg"
+  }
+}
+resource "tls_private_key" "web-key" {
+  algorithm = "RSA"
+}
+
+resource "aws_key_pair" "web-key" {
+  key_name   = "web-key"
+  public_key = tls_private_key.web-key.public_key_openssh
+
+}
+
+resource "local_file" "web-key" {
+  content  = tls_private_key.web-key.private_key_pem
+  filename = "web-key.pem"
+}
+
+resource "aws_instance" "myec2" {
+
+  ami           = "ami-0895022f3dac85884"
+  instance_type = var.instance_type
+  subnet_id = aws_subnet.main.id
+  key_name = "web-key"
+  security_groups = [aws_security_group.ed-sg.id]
+ availability_zone   = "us-west-2a"
+  tags = {
+    Name = "Terraform-project"
+  }
+
+ provisioner "remote-exec" {
+
+   connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    private_key = tls_private_key.web-key.private_key_pem
+    host     = self.public_ip
+  }
+inline = [
+      "sudo yum install httpd php -y",
+      " sudo yum install git -y",
+      " sudo systemctl enable httpd"
+    ]
+
+
+
+
+}
+
+}
